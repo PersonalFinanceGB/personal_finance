@@ -1,0 +1,7 @@
+venv
+server/data.json
+db.sqlite3
+__pycache__
+server/static
+server/media
+workspace.code-workspace
