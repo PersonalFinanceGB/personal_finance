@@ -1,1 +1,1 @@
-# persomal_finance
+# personal_finance
