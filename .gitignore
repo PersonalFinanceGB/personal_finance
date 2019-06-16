@@ -5,3 +5,5 @@ __pycache__
 server/static
 server/media
 workspace.code-workspace
+server/server/configMoney.py
+.idea/
