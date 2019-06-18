@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru-ru">
+<head>
+    <meta charset="UTF-8">
+    <title>На мели</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+{% block registration %}
+
+{% endblock %}
+ <nav class="navbar  mynav" role="navigation" id="navbar">
+    			<div class="container">
+
+            <a class="navbar-brand mynav" href="{% url 'home' %}">На мели</a>
+
+    					<ul class="nav navbar-nav navbar-right">
+    						{% if user.is_authenticated %}
+
+                                <li><a href="{% url 'home' %}" class="btn btn-simple">Log out</a></li>
+    						{% else %}
+    						      <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>
+    						      <li><a href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></li>
+    						{% endif %}
+    					</ul>
+
+
+
+    			</div>
+    		</nav>
+        <div class="container mycontent">
+          {% block content %}
+
+          {% endblock %}
+
+        </div>
+
+
+
+<canvas id="canvas"></canvas>
+
+
+
+</body>
+</html>
