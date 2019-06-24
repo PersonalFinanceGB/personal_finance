@@ -1,5 +1,4 @@
 Django
 djangorestframework
-# для форм
-django-bootstrap4
+django-allauth
 
