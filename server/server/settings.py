@@ -137,7 +137,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/accounts/login/'
-LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'users.User'
 ACCOUNT_EMAIL_REQUIRED = True
