@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', testmainpage.views.test),
     url(r'^accounts/', include('allauth.urls')),
-
+    path('api/v1/', include('api.urls')),
 ]
 
 
