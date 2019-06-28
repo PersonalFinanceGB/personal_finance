@@ -13,7 +13,7 @@ class User_acct(models.Model):
 		default=None,
 	)
 	id_acct = models.ForeignKey(
-		Type_acct, on_delete=models.CASCADE, 
+		Type_acct, on_delete=models.CASCADE,
 		default=None,
 	)
 	sum = models.DecimalField(
@@ -21,6 +21,4 @@ class User_acct(models.Model):
 		decimal_places=2,
 		default=0,
 	)
-	
-	
-	
+
