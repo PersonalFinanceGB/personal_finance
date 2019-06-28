@@ -5,7 +5,7 @@ from acct.models import User_acct
 from acct.serializers import BillSerializer
 
 
-class BillView(generics.ListAPIView):
+class BillView(generics.ListCreateAPIView):
     """
     Returns a list of all authors.
     """
