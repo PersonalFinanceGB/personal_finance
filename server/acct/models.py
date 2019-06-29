@@ -5,6 +5,9 @@ from users.models import User
 class Type_acct(models.Model):
 	type_acct = models.CharField(max_length=128)
 
+	def __str__(self):
+		return self.type_acct
+
 
 class User_acct(models.Model):
 	

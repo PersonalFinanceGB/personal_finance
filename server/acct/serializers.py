@@ -1,5 +1,17 @@
-from .models import User_acct
-from rest_framework import serializers, request
+from .models import User_acct, Type_acct
+from rest_framework import serializers
+
+
+class AcctSerializer(serializers.ModelSerializer):
+    """
+    Serializing all the Type_acct
+    """
+    class Meta:
+        model = Type_acct
+        fields = ('type_acct', )
+
+    def create(self, validated_data):
+        return Type_acct.objects.create(**validated_data)
 
 
 class BillSerializer(serializers.ModelSerializer):
@@ -10,11 +22,9 @@ class BillSerializer(serializers.ModelSerializer):
         model = User_acct
         fields = ('id_user', 'id_acct', 'sum')
 
-    # email = serializers.IntegerField()
-    # content = serializers.CharField(max_length=200)
-    # created = serializers.DateTimeField()
-
     def create(self, validated_data):
+        # type_acct_data = validated_data.get('id_acct')
+        # Type_acct.objects.create(**type_acct_data)
         return User_acct.objects.create(**validated_data)
 
     # def update(self, instance, validated_data):
