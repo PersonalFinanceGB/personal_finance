@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework import generics
 from .models import Bill
 from .serializers import BillSerializer
 
 
-class BillsView(ListAPIView):
+class BillsView(generics.ListCreateAPIView):
     """
     Returns a list of all bills.
     """
@@ -13,7 +13,7 @@ class BillsView(ListAPIView):
     queryset = Bill.objects.all()
 
 
-class BillsInstanceView(RetrieveAPIView):
+class BillsInstanceView(generics.RetrieveAPIView):
     """
     Returns a single bill.
     Also allows updating and deleting

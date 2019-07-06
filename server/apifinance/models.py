@@ -5,7 +5,7 @@ from datetime import datetime
 class Bill(models.Model):
     id = models.IntegerField(
         primary_key=True,
-        verbose_name='уникальный ручной id счета'
+        verbose_name='id счета'
     )
     bill_name = models.CharField(
         verbose_name='название счета',
