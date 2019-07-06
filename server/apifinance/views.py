@@ -13,7 +13,7 @@ class BillsView(generics.ListCreateAPIView):
     queryset = Bill.objects.all()
 
 
-class BillsInstanceView(generics.RetrieveAPIView):
+class BillsInstanceView(generics.RetrieveUpdateAPIView):
     """
     Returns a single bill.
     Also allows updating and deleting
@@ -23,4 +23,5 @@ class BillsInstanceView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return Bill.objects.all()
+
 
