@@ -22,6 +22,7 @@ import testmainpage.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', testmainpage.views.test),
+    url(r'^api/', include('apifinance.urls')),
     url(r'^accounts/', include('allauth.urls')),
 
 ]
