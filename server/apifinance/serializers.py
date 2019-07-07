@@ -11,7 +11,10 @@ class BillSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bill
-        fields = ('id', 'bill_name', 'my_extra_fields', )
+        fields = ('id',
+                  'bill_name',
+                  'balance',
+                  'my_extra_fields', )
 
     def get_extra_fields(self, obj):
         tmp_dict = {
