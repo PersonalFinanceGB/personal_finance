@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import Bill
-from .serializers import BillSerializer
+from .models import Bill, Transaction
+from .serializers import BillSerializer, TransactionSerializer
 
 
 class BillsView(generics.ListCreateAPIView):
@@ -25,3 +25,18 @@ class BillsInstanceView(generics.RetrieveUpdateAPIView):
         return Bill.objects.all()
 
 
+class TransactionView(generics.ListCreateAPIView):
+    """
+    Returns a list of all Transactions.
+    """
+    model = Transaction
+    serializer_class = TransactionSerializer
+    queryset = Transaction.objects.all()
+
+
+class TransactionInstanceView(generics.RetrieveUpdateAPIView):
+    model = Transaction
+    serializer_class = TransactionSerializer
+
+    def get_queryset(self):
+        return Transaction.objects.all()

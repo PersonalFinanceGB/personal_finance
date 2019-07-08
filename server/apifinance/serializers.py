@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Bill
+from .models import Bill, Transaction
 
 
 class BillSerializer(serializers.ModelSerializer):
@@ -22,5 +22,16 @@ class BillSerializer(serializers.ModelSerializer):
             'name': obj.bill_name
         }
         return tmp_dict
-        # return "тест {}" .format(obj.id)
 
+
+class TransactionSerializer(serializers.ModelSerializer):
+    """
+    Сериализация транзакции
+    """
+    class Meta:
+        model = Transaction
+        fields = ('id',
+                  'payer',
+                  'buyer',
+                  'date_time',
+                  'sum_contract',)
