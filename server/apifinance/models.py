@@ -46,6 +46,6 @@ class Transaction(models.Model):
         max_digits=20,
         decimal_places=2
     )
-
+    #коммент
     def __str__(self):
         return f'{self.payer} -> {self.payer} = {self.sum_contract}'
