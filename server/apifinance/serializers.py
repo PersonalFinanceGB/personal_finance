@@ -23,11 +23,20 @@ class BillSerializer(serializers.ModelSerializer):
         }
         return tmp_dict
 
+    # def update(self, instance, validated_data):
+    #     instance.id = validated_data.get('id', instance.id)
+    #     instance.bill_name = validated_data.get('bill_name', instance.bill_name)
+    #     instance.balance = validated_data.get('balance', instance.balance)
+    #     instance.save()
+    #     return instance
+
 
 class TransactionSerializer(serializers.ModelSerializer):
     """
     Сериализация транзакции
     """
+    id = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Transaction
         fields = ('id',
@@ -35,3 +44,21 @@ class TransactionSerializer(serializers.ModelSerializer):
                   'buyer',
                   'date_time',
                   'sum_contract',)
+
+    def create(self, validated_data):
+        instance_payer = validated_data['payer']
+        data = {
+            "id": instance_payer.id,
+            "bill_name": instance_payer.bill_name,
+            "balance": instance_payer.balance - validated_data['sum_contract']
+        }
+        instance_payer.update(instance_payer, validated_data=data)
+        instance_buyer = validated_data['buyer']
+        data = {
+            "id": instance_buyer.id,
+            "bill_name": instance_buyer.bill_name,
+            "balance": instance_buyer.balance + validated_data['sum_contract']
+        }
+        instance_buyer.update(instance_buyer, validated_data=data)
+        return Transaction.objects.create(**validated_data)
+

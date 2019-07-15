@@ -23,6 +23,13 @@ class Bill(models.Model):
     def __str__(self):
         return f'{self.bill_name} ({self.balance} руб.)'
 
+    def update(self, instance, validated_data):
+        instance.id = validated_data.get('id', instance.id)
+        instance.bill_name = validated_data.get('bill_name', instance.bill_name)
+        instance.balance = validated_data.get('balance', instance.balance)
+        instance.save()
+        return instance
+
 
 class Transaction(models.Model):
     id = models.IntegerField(
@@ -46,6 +53,6 @@ class Transaction(models.Model):
         max_digits=20,
         decimal_places=2
     )
-    #коммент
+
     def __str__(self):
         return f'{self.payer} -> {self.payer} = {self.sum_contract}'

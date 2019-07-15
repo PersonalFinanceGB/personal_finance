@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, response, request
 from .models import Bill, Transaction
 from .serializers import BillSerializer, TransactionSerializer
 
@@ -40,3 +40,7 @@ class TransactionInstanceView(generics.RetrieveUpdateAPIView):
 
     def get_queryset(self):
         return Transaction.objects.all()
+
+    # def post(self, *args, **kwargs):
+    #     print(args, '\n', kwargs)
+    #     return response.Response
