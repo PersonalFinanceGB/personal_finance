@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
+from allauth.account.views import confirm_email
 import testmainpage.views
 
 
@@ -24,7 +25,8 @@ urlpatterns = [
     path('', testmainpage.views.test),
     url(r'^api/', include('apifinance.urls')),
     url(r'^accounts/', include('allauth.urls')),
-
+    path('api/v1/', include('api.urls')),
+    url(r'^accounts-rest/registration/account-confirm-email/(?P<key>.+)/$', confirm_email, name='account_confirm_email'),
 ]
 
 
