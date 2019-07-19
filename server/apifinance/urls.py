@@ -15,3 +15,4 @@ urlpatterns = [
     url(r'^trank/(?P<pk>[\d]+)/$', TransactionInstanceView.as_view(),
         name='transaction-instanse'),
 ]
+

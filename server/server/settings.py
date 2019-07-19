@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'users', 
     'testmainpage',
     'apifinance',
+    'rest_framework.authtoken',
+    'api'
 ]
 
 MIDDLEWARE = [
